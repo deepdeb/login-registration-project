@@ -1,0 +1,64 @@
+.container {
+    text-align: center;
+    margin: 100px 10%
+}
+
+.studentlist {
+    margin-top: 20px;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+th, td {
+    border: 1px solid #ddd;
+    padding: 8px;
+}
+
+th {
+    background-color: #f2f2f2;
+}
+
+.actions {
+    text-align: center;
+}
+
+.actions button {
+    margin-right: 5px;
+    padding: 8px 16px;
+    border: none;
+    color: white;
+    cursor: pointer;
+}
+
+.actions .edit {
+    background-color: #6495ED;
+}
+
+.actions .delete {
+    background-color: #d9534f;
+}
+
+.actions .edit:hover {
+    background-color: #4169E1;
+}
+
+.actions .delete:hover {
+    background-color: #AD3B38;
+}
+
+.greyButton {
+    background-color: #cccccc !important;
+    color: #666666 !important;
+}
+
+@media screen and (max-width: 600px) {
+   .actions button {
+        margin-right: 0;
+        margin-bottom: 5px;
+        display: block;
+        width: 100%;
+    }
+}
