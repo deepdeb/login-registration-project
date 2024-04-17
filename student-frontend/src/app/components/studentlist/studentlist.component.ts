@@ -5,17 +5,20 @@ import { StudentService } from '../../services/student.service';
 
 //Material imports
 import { MatDialog } from '@angular/material/dialog';
+import { MatTableModule } from '@angular/material/table';
+import { MatButtonModule } from '@angular/material/button'
 
 @Component({
   selector: 'app-studentlist',
   standalone: true,
-  imports: [StudentregistrationComponent],
+  imports: [StudentregistrationComponent, MatTableModule, MatButtonModule],
   templateUrl: './studentlist.component.html',
   styleUrl: './studentlist.component.css',
 })
 export class StudentlistComponent implements OnInit {
   studentList: any;
   studentId: any;
+  displayedColumns: string[] = ['firstName', 'lastName', 'age', 'phone', 'email', 'actions'];
 
   constructor(
     private _authService: AuthService,
