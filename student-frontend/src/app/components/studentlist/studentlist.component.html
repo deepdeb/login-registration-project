@@ -19,8 +19,10 @@
                 <td>{{item.phone}}</td>
                 <td>{{item.email}}</td>
                 <td class="actions">
-                    <button class="edit" (click)="editProfile(item)" [disabled]="item.id !== studentId" [class.greyButton]="item.id !== studentId">Edit</button>
-                    <button class="delete" (click)="deleteStudent(item.id)" [disabled]="item.id !== studentId" [class.greyButton]="item.id !== studentId">Delete</button>
+                    <button class="edit" (click)="editProfile(item)" [disabled]="item.id !== studentId"
+                        [class.greyButton]="item.id !== studentId">Edit</button>
+                    <button class="delete" (click)="deleteStudent(item.id)" [disabled]="item.id !== studentId"
+                        [class.greyButton]="item.id !== studentId">Delete</button>
                 </td>
             </tr>
             }
