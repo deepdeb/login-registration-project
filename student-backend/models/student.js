@@ -1,7 +1,7 @@
 const { uuid } = require("uuidv4");
 module.exports = (sequelize, DataTypes) => {
   const Student = sequelize.define(
-    "students",
+    "student",
     {
       id: {
         type: DataTypes.UUID,
