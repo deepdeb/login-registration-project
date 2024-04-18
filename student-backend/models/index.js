@@ -21,16 +21,18 @@ if (config.use_env_variable) {
   );
 }
 
-fs.readdirSync(__dirname)
+const filesInFolder = fs.readdirSync(__dirname);
+
+const requiredFiles = filesInFolder
   .filter((file) => {
-    return (
-      file.indexOf(".") !== 0 &&
-      file !== basename &&
-      file.slice(-3) === ".js" &&
-      file.indexOf(".test.js") === -1
-    );
+    const isJsFile = file.endsWith(".js");
+    const isNotHiddenFile = !file.endsWith(".");
+    const isNotBasenameFile = file !== basename;
+    const isNotTestFile = !file.includes(".test.js");
+    return isJsFile && isNotTestFile && isNotBasenameFile && isNotHiddenFile;
   })
-  .forEach((file) => {
+  
+  requiredFiles.forEach((file) => {
     const model = require(path.join(__dirname, file))(
       sequelize,
       Sequelize.DataTypes
