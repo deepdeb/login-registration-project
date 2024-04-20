@@ -23,7 +23,7 @@ exports.register = async (req, res) => {
   //Duplicate email check start
   const { email } = body;
 
-  const existingUser = await db.student.findOne({
+  const existingUser = await db.Student.findOne({
     where: db.sequelize.where(
       db.sequelize.fn("lower", db.sequelize.col("email")),
       db.sequelize.fn("lower", email)
@@ -44,7 +44,7 @@ exports.register = async (req, res) => {
     body.password = salt + "$" + hash;
   }
 
-  const student = await db.student.create(req.body);
+  const student = await db.Student.create(req.body);
 
   if (student) {
     return res
@@ -72,7 +72,7 @@ exports.login = async (req, res) => {
 
     const { email, password } = body;
 
-    const matchedStudent = await db.student.findOne({
+    const matchedStudent = await db.Student.findOne({
       where: db.sequelize.where(
         db.sequelize.fn("lower", db.sequelize.col("email")),
         db.sequelize.fn("lower", email)
@@ -102,7 +102,7 @@ exports.login = async (req, res) => {
 
 // List all students functionality
 exports.getStudentList = async (req, res) => {
-  const students = await db.student.findAll();
+  const students = await db.Student.findAll();
   if (!students) {
     return res.status(404).json({ msg: "No data found" });
   }
@@ -112,7 +112,7 @@ exports.getStudentList = async (req, res) => {
 // Delete student functionality
 exports.deleteStudent = async (req, res) => {
   try {
-    const deletedStudent = await db.student.destroy({
+    const deletedStudent = await db.Student.destroy({
       where: {
         id: req.params.id,
       },
@@ -128,7 +128,7 @@ exports.deleteStudent = async (req, res) => {
 
 // Edit profile functionality
 exports.editProfile = async (req, res) => {
-  const [updatedCount, updatedStudent] = await db.student.update(req.body, {
+  const [updatedCount, updatedStudent] = await db.Student.update(req.body, {
     where: { id: req.params.id },
   });
   if (!updatedCount > 0) {
